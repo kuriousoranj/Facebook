@@ -89,8 +89,6 @@ class FeedViewController: UIViewController, UITextFieldDelegate, UIViewControlle
             { () -> Void in
                 // Animate here
                 animateImageView.frame = window.convertRect(photoViewControler.imageView.frame, fromView: photoViewControler.scrollView)
-//                animateImageView.contentMode = photoViewControler.imageView.contentMode
-//                animateImageView.clipsToBounds = photoViewControler.imageView.clipsToBounds
                 toViewController.view.alpha = 1
             })
             { (finished: Bool) -> Void in

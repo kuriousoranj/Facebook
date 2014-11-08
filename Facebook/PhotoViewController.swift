@@ -22,11 +22,8 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate
     {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        imageView.image = image
-        
-        scrollView.contentSize = imageView.frame.size
         scrollView.delegate = self
+        imageView.image = image
     }
 
     func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView!)
@@ -63,7 +60,7 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate
                 distance = 0 - distance
             }
             var alpha = (100 - distance)/100
-
+            
             view.backgroundColor = UIColor(white: 0, alpha: alpha)
         }
     }
@@ -73,7 +70,16 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate
         var scale = scrollView.zoomScale
         var distance = scrollView.contentOffset.y
         println(distance)
-    
+        
+        UIView.animateWithDuration(0.4, animations:
+        { () -> Void in
+            self.doneButton.alpha = 1
+            self.actionImageView.alpha = 1
+        })
+        
+        println(scrollView.contentOffset.y)
+        
+        
         if (scale < 1.3) && ((distance > 100) || (distance < -100))
         {
             // Finish the job
